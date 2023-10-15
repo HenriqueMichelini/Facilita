@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 void login() {
   // Add your login logic here
-  print('Username: ${usernameController.text}');
-  print('Password: ${passwordController.text}');
 }
 
 final TextEditingController usernameController = TextEditingController();
@@ -27,6 +25,7 @@ void main() {
                   child: TextField(
                     controller: usernameController,
                     decoration: const InputDecoration(
+                      hintText: 'Usuário',
                       prefixIcon: Icon(Icons.person),
                     ),
                   ),
@@ -36,8 +35,10 @@ void main() {
                   child: TextField(
                     controller: passwordController,
                     decoration: const InputDecoration(
+                      labelText: 'Senha',
                       prefixIcon: Icon(Icons.lock),
                     ),
+
                     obscureText: true, // Hide the password text
                   ),
                 ),
