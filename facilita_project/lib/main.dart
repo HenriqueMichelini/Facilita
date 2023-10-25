@@ -1,3 +1,4 @@
+import 'package:facilita_project/pages/dashboard.dart';
 import 'package:facilita_project/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: Dashboard(),
     );
   }
 }
