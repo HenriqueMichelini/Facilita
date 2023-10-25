@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "978216473678",
+    "project_id": "facillita",
+    "storage_bucket": "facillita.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:978216473678:android:fd6cef8124822d80ca9f1f",
+        "android_client_info": {
+          "package_name": "com.example.facilita_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "978216473678-pbnjbo23kasevt9vts1jkitret71d13g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2D5Q7G__W42yLjyYGAkMLeR-S_bVsiT0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "978216473678-pbnjbo23kasevt9vts1jkitret71d13g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
