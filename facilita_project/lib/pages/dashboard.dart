@@ -6,6 +6,8 @@ class Dashboard extends StatelessWidget {
 
   void selectMonth() {}
   void selectYear() {}
+  final String year = "2023";
+  final String month = "Feve";
 
   @override
   Widget build(BuildContext context) {
@@ -24,15 +26,59 @@ class Dashboard extends StatelessWidget {
                   children: [
                     SelectButton(
                       onTap: selectMonth,
-                      text: "Feve",
+                      text: month,
                     ),
-                    //const SizedBox(width: 1),
                     SelectButton(
                       onTap: selectYear,
-                      text: "2024",
+                      text: year,
                     ),
                   ],
-                )
+                ),
+                //  saldo
+                const SizedBox(height: 25),
+                Container(
+                  color: const Color.fromARGB(255, 25, 43, 27),
+                  height: 125,
+                  alignment: Alignment.centerLeft,
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal:
+                          20, // Add horizontal padding to the entire Column
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment
+                          .spaceEvenly, // Distribute items evenly vertically
+                      crossAxisAlignment: CrossAxisAlignment
+                          .start, // Align items horizontally to the left
+                      children: [
+                        Text(
+                          "Saldo: 100",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          "Despesas: 500",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          "Despesas: 500",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
