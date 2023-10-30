@@ -1,14 +1,16 @@
 import 'package:facilita_project/components/carteira_container.dart';
+import 'package:facilita_project/components/my_button.dart';
 import 'package:flutter/material.dart';
 import 'package:facilita_project/components/select_button.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}); // Corrected the constructor syntax
 
-  void selectMonth() {}
-  void selectYear() {}
   final String year = "2023";
   final String month = "Feve";
+
+  void selectMonth() {}
+  void selectYear() {}
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +35,7 @@ class Dashboard extends StatelessWidget {
                       onTap: selectYear,
                       text: year,
                     ),
+                    const LogoutButton(),
                   ],
                 ),
                 //  saldo
