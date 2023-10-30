@@ -56,6 +56,7 @@ class _LoginPageState extends State<LoginPage> {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(e.message)));
     }
+    setState(() => isLoading = false);
   }
 
   register() async {
@@ -65,10 +66,10 @@ class _LoginPageState extends State<LoginPage> {
           .read<AuthService>()
           .register(usernameController.text, passwordController.text);
     } on AuthException catch (e) {
-      setState(() => isLoading = false);
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(e.message)));
     }
+    setState(() => isLoading = false);
   }
 
   void loginUserIn() {
@@ -135,7 +136,6 @@ class _LoginPageState extends State<LoginPage> {
                       keyboardType: TextInputType.emailAddress,
                       validator: (value) {
                         if (value!.isEmpty) {
-                          setState(() => isLoading = false);
                           return 'Insira o email corretamente!';
                         }
                         return null;
@@ -167,10 +167,8 @@ class _LoginPageState extends State<LoginPage> {
                       style: const TextStyle(color: Colors.white),
                       validator: (value) {
                         if (value!.isEmpty) {
-                          setState(() => isLoading = false);
                           return 'Insira sua senha!';
                         } else if (value.length < 8) {
-                          setState(() => isLoading = false);
                           return 'Sua senha deve ter no minimo 8 caracteres!';
                         }
                         return null;
@@ -193,9 +191,10 @@ class _LoginPageState extends State<LoginPage> {
                   // ),
 
                   //  login button
-                  LoginButton(
+                  MyButton(
                     onTap: loginUserIn,
                     isLoading: isLoading,
+                    label: actionButton,
                   ),
 
                   const SizedBox(height: 30),

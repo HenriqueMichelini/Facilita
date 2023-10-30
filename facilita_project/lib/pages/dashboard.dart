@@ -2,6 +2,9 @@ import 'package:facilita_project/components/carteira_container.dart';
 import 'package:facilita_project/components/my_button.dart';
 import 'package:flutter/material.dart';
 import 'package:facilita_project/components/select_button.dart';
+import 'package:provider/provider.dart';
+
+import '../services/auth_service.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}); // Corrected the constructor syntax
@@ -35,7 +38,9 @@ class Dashboard extends StatelessWidget {
                       onTap: selectYear,
                       text: year,
                     ),
-                    const LogoutButton(),
+                    SelectButton(
+                        onTap: () => context.read<AuthService>().logout(),
+                        text: 'Sair'),
                   ],
                 ),
                 //  saldo
