@@ -1,5 +1,6 @@
 import 'package:facilita_project/enums/providers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -63,6 +64,9 @@ class AuthService extends ChangeNotifier{
         case Providers.google:
           await _auth.signInWithProvider(GoogleAuthProvider());
           break;
+        case Providers.twitter:
+            await _auth.signInWithProvider(TwitterAuthProvider());
+          break;
         default:
       }
 
@@ -77,6 +81,16 @@ class AuthService extends ChangeNotifier{
       }
     }
   }
+
+  resetPassword(String email) async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email); 
+      _getUser();
+    } catch (e) {
+      
+    }
+  }
+
 
   logout() async {
     await _auth.signOut();

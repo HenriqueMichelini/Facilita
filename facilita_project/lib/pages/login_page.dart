@@ -1,5 +1,7 @@
 import 'package:facilita_project/components/my_button.dart';
 import 'package:facilita_project/components/square_tile.dart';
+import 'package:facilita_project/enums/providers.dart';
+import 'package:facilita_project/pages/reset_password_page.dart';
 import 'package:facilita_project/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -70,6 +72,10 @@ class _LoginPageState extends State<LoginPage> {
           .showSnackBar(SnackBar(content: Text(e.message)));
     }
     setState(() => isLoading = false);
+  }
+
+  resetPassword() {
+    return ResetPasswordPage();
   }
 
   void loginUserIn() {
@@ -179,16 +185,19 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 10),
 
                   //forgot password
-                  // const Padding(
-                  //   padding: EdgeInsets.symmetric(horizontal: 25.0),
-                  //   child: Row(
-                  //     mainAxisAlignment: MainAxisAlignment.end,
-                  //     children: [
-                  //       Text('Esqueceu sua senha?',
-                  //           style: TextStyle(color: Colors.white)),
-                  //     ],
-                  //   ),
-                  // ),
+                  TextButton(
+                    onPressed: () => ResetPasswordPage(),
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 25.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text('Esqueceu sua senha?',
+                              style: TextStyle(color: Colors.white)),
+                        ],
+                      ),
+                    ),
+                  ),
 
                   //  login button
                   MyButton(
@@ -237,17 +246,25 @@ class _LoginPageState extends State<LoginPage> {
 
                   const SizedBox(height: 50),
 
-                  //  google + apple login
-                  const Row(
+                  //  google + twitter login
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       //  google button
-                      SquareTile(imagePath: 'lib/images/google-icon.png'),
+                      SquareTile(
+                        imagePath: 'lib/images/google-icon.png',
+                        provider: Providers.google,
+                        isLoading: isLoading,
+                      ),
 
                       SizedBox(width: 25),
 
-                      //  apple button
-                      SquareTile(imagePath: 'lib/images/apple-icon.png'),
+                      //  twitter button
+                      SquareTile(
+                        imagePath: 'lib/images/twitter-icon.png',
+                        provider: Providers.twitter,
+                        isLoading: isLoading,
+                      ),
                     ],
                   ),
                 ],
