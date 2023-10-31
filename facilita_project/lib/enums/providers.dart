@@ -1,4 +1,4 @@
-enum Provider {
+enum Providers {
   google,
   apple,
   facebook,

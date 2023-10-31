@@ -1,5 +1,7 @@
+import 'package:facilita_project/enums/providers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AuthException implements Exception {
   String message;
@@ -55,9 +57,15 @@ class AuthService extends ChangeNotifier{
     }
   }
 
-  loginWithProvider() async {
+  loginWithProvider(Providers provider) async {
     try {
-      await _auth.signInWithProvider(GoogleAuthProvider());
+      switch (provider) {
+        case Providers.google:
+          await _auth.signInWithProvider(GoogleAuthProvider());
+          break;
+        default:
+      }
+
       _getUser();
     } on FirebaseAuthException catch (e) {
       if(e.code.toLowerCase() == 'user-not-found'){
