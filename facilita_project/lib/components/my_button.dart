@@ -6,13 +6,14 @@ class MyButton extends StatelessWidget {
   final Function()? onTap;
   final bool isLoading;
   final String label;
+  final String imagePath;
 
-  const MyButton({
-    super.key,
-    required this.onTap,
-    required this.isLoading,
-    required this.label,
-  });
+  const MyButton(
+      {super.key,
+      required this.onTap,
+      required this.isLoading,
+      required this.label,
+      required this.imagePath});
 
   @override
   Widget build(BuildContext context) {
@@ -25,27 +26,46 @@ class MyButton extends StatelessWidget {
           color: const Color.fromARGB(255, 25, 43, 27),
           borderRadius: BorderRadius.circular(8),
         ),
-        child: (isLoading)
-            ? Padding(
-                padding: EdgeInsets.all(25),
-                child: SizedBox(
-                  width: 24,
-                  height: 24,
-                  child: CircularProgressIndicator(
-                    color: Colors.white,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: (isLoading)
+              ? [
+                  Container(
+                    padding: EdgeInsets.all(16),
+                    margin: const EdgeInsets.symmetric(horizontal: 0),
+                    child: SizedBox(
+                      width: 24,
+                      height: 24,
+                      child: CircularProgressIndicator(
+                        color: Colors.white,
+                      ),
+                    ),
+                  )
+                ]
+              : [
+                  Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        (imagePath.isNotEmpty)
+                            ? Image.asset(
+                                imagePath,
+                                height: 25,
+                              )
+                            : const SizedBox(width: 0),
+                        Text(
+                          label,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              )
-            : Center(
-                child: Text(
-                  label,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
+                ],
+        ),
       ),
     );
   }

@@ -37,11 +37,11 @@ class _LoginPageState extends State<LoginPage> {
     setState(() {
       isLogin = action;
       if (isLogin) {
-        titulo = 'Bem-vindo à Facilita!';
+        titulo = 'Bem-vindo à Facillita!';
         actionButton = 'Login';
         togglerButton = 'Ainda não tem conta? Cadastre-se agora.';
       } else {
-        titulo = 'Bem-vindo à Facilita!';
+        titulo = 'Bem-vindo à Facillita!';
         actionButton = 'Cadastrar';
         togglerButton = 'Voltar ao Login.';
       }
@@ -76,6 +76,17 @@ class _LoginPageState extends State<LoginPage> {
 
   resetPassword() {
     return ResetPasswordPage();
+  }
+
+  loginProvider() async {
+    setState(() => isLoading = true);
+    try {
+      await context.read<AuthService>().loginWithProvider(Providers.google);
+    } on AuthException catch (e) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.message)));
+    }
+    setState(() => isLoading = false);
   }
 
   void loginUserIn() {
@@ -136,7 +147,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           fillColor: const Color.fromARGB(255, 25, 43, 27),
                           filled: true,
-                          hintText: 'Usuário',
+                          hintText: 'Email',
                           hintStyle: const TextStyle(color: Colors.white38)),
                       style: const TextStyle(color: Colors.white),
                       keyboardType: TextInputType.emailAddress,
@@ -182,11 +193,16 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
 
-                  const SizedBox(height: 10),
+                  
 
                   //forgot password
                   TextButton(
-                    onPressed: () => ResetPasswordPage(),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ResetPasswordPage())
+                      );
+                    },
                     child: const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 25.0),
                       child: Row(
@@ -199,11 +215,14 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
 
+                  const SizedBox(height: 10),
+
                   //  login button
                   MyButton(
                     onTap: loginUserIn,
                     isLoading: isLoading,
                     label: actionButton,
+                    imagePath: '',
                   ),
 
                   const SizedBox(height: 30),
@@ -251,19 +270,11 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       //  google button
-                      SquareTile(
+                      MyButton(
+                        onTap: loginProvider,
+                        isLoading: isLoading,
+                        label: 'oogle',
                         imagePath: 'lib/images/google-icon.png',
-                        provider: Providers.google,
-                        isLoading: isLoading,
-                      ),
-
-                      SizedBox(width: 25),
-
-                      //  twitter button
-                      SquareTile(
-                        imagePath: 'lib/images/twitter-icon.png',
-                        provider: Providers.twitter,
-                        isLoading: isLoading,
                       ),
                     ],
                   ),

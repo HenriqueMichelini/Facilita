@@ -24,15 +24,20 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
   bool isLogin = true;
   bool isLoading = false;
   late String titulo;
-  late String actionButton;
-  late String togglerButton;
 
   @override
   void initState() {
     super.initState();
+    setFormAction();
   }
 
-resetPassword() {
+  setFormAction() {
+    setState(() {
+      titulo = 'Alterar Senha!';
+    });
+  }
+
+  resetPassword() {
     try {
       context.read<AuthService>().resetPassword(usernameController.text);
     } on AuthException catch (e) {
@@ -91,7 +96,7 @@ resetPassword() {
                           ),
                           fillColor: const Color.fromARGB(255, 25, 43, 27),
                           filled: true,
-                          hintText: 'Usuário',
+                          hintText: 'Email',
                           hintStyle: const TextStyle(color: Colors.white38)),
                       style: const TextStyle(color: Colors.white),
                       keyboardType: TextInputType.emailAddress,
@@ -111,12 +116,16 @@ resetPassword() {
                     onTap: resetPassword,
                     isLoading: isLoading,
                     label: 'Enviar',
+                    imagePath: '',
                   ),
 
                   const SizedBox(height: 30),
 
                   TextButton(
-                    onPressed: () => LoginPage(),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => LoginPage()));
+                    },
                     child: Text('Voltar ao Login.'),
                     style: textButtonStyle,
                   ),

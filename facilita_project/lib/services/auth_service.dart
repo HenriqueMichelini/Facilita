@@ -86,8 +86,11 @@ class AuthService extends ChangeNotifier{
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email); 
       _getUser();
-    } catch (e) {
-      
+    } on FirebaseAuthException catch (e) {
+      if(e.code.toLowerCase() == 'invalid-email'){
+        throw AuthException('O Email é inválido!');
+      }
+      late FirebaseAuthException test = e;
     }
   }
 
