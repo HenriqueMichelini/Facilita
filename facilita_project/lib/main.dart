@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'facilita_project',
+      title: 'Facillita',
       home: AuthCheck(),
     );
   }
