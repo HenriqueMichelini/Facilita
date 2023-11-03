@@ -31,9 +31,9 @@ class MyButton extends StatelessWidget {
           children: (isLoading)
               ? [
                   Container(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     margin: const EdgeInsets.symmetric(horizontal: 0),
-                    child: SizedBox(
+                    child: const SizedBox(
                       width: 24,
                       height: 24,
                       child: CircularProgressIndicator(
@@ -55,7 +55,7 @@ class MyButton extends StatelessWidget {
                             : const SizedBox(width: 0),
                         Text(
                           label,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             fontSize: 16,

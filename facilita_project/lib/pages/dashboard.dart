@@ -1,4 +1,5 @@
 import 'package:facilita_project/components/carteira_container.dart';
+import 'package:facilita_project/components/chart_container.dart';
 import 'package:facilita_project/components/my_button.dart';
 import 'package:flutter/material.dart';
 import 'package:facilita_project/components/select_button.dart';
@@ -48,8 +49,10 @@ class Dashboard extends StatelessWidget {
 
                 //  CARTEIRA CONTAINER
                 const CarteiraContainer(),
+                const SizedBox(height: 10),
 
-                //  EXTRATO CONTAINER
+                //  CHART CONTAINER
+                const ChartContainer()
               ],
             ),
           ),

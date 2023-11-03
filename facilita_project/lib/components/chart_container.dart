@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
+import 'package:facilita_project/components/chart.dart';
 
 class ChartContainer extends StatelessWidget {
   const ChartContainer({super.key});
@@ -25,6 +26,7 @@ class ChartContainer extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  //  TITLE
                   Container(
                     alignment: Alignment.center,
                     child: const Text(
@@ -36,6 +38,8 @@ class ChartContainer extends StatelessWidget {
                       ),
                     ),
                   ),
+                  // CHART
+                  Chart()
                 ],
               ),
             ),

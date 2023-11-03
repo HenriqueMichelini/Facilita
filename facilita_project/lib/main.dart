@@ -1,3 +1,4 @@
+import 'package:facilita_project/components/chart_container.dart';
 import 'package:facilita_project/firebase_options.dart';
 import 'package:facilita_project/pages/dashboard.dart';
 import 'package:facilita_project/pages/login_page.dart';
@@ -31,7 +32,8 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Facillita',
-      home: AuthCheck(),
+      home: Dashboard(),
+      //home: AuthCheck(),
     );
   }
 }
