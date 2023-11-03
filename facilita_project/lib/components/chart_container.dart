@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pie_chart/pie_chart.dart';
 
-class CarteiraContainer extends StatelessWidget {
-  const CarteiraContainer({super.key});
+class ChartContainer extends StatelessWidget {
+  const ChartContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class CarteiraContainer extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
                 color: const Color.fromARGB(255, 25, 43, 27),
               ),
-              height: 175,
+              height: 400,
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -27,36 +28,12 @@ class CarteiraContainer extends StatelessWidget {
                   Container(
                     alignment: Alignment.center,
                     child: const Text(
-                      "CARTEIRA",
+                      "DESPESAS x ENVIOS",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
-                    ),
-                  ),
-                  const Text(
-                    "Saldo: 100",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const Text(
-                    "Despesas: 500",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const Text(
-                    "Despesas: 500",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ],

@@ -40,6 +40,8 @@ class Dashboard extends StatelessWidget {
 
                 //  CARTEIRA CONTAINER
                 const CarteiraContainer(),
+
+                //  EXTRATO CONTAINER
               ],
             ),
           ),
