@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pie_chart/pie_chart.dart';
 import 'package:facilita_project/components/chart.dart';
 
 class ChartContainer extends StatelessWidget {
@@ -30,7 +29,7 @@ class ChartContainer extends StatelessWidget {
                   Container(
                     alignment: Alignment.center,
                     child: const Text(
-                      "DESPESAS x ENVIOS",
+                      "DESPESAS x SALDO",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 24,
@@ -39,7 +38,7 @@ class ChartContainer extends StatelessWidget {
                     ),
                   ),
                   // CHART
-                  Chart()
+                  const Chart(),
                 ],
               ),
             ),

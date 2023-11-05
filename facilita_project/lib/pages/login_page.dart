@@ -122,7 +122,7 @@ class _LoginPageState extends State<LoginPage> {
                   //welcome message
                   Text(
                     titulo,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 16,
                     ),
@@ -193,15 +193,13 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
 
-                  
-
                   //forgot password
                   TextButton(
                     onPressed: () {
                       Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => ResetPasswordPage())
-                      );
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ResetPasswordPage()));
                     },
                     child: const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 25.0),

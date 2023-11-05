@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
 
 class Chart extends StatelessWidget {
-  Chart({Key? key});
-
-  final dataMap = <String, double>{
-    "Envios": 10,
-    "Despesas": 5,
-  };
-
-  final colorList = <Color>[
-    const Color.fromARGB(255, 20, 164, 77),
-    const Color.fromARGB(255, 220, 76, 100),
-  ];
+  const Chart({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final dataMap = <String, double>{
+      "Envios": 10,
+      "Despesas": 5,
+    };
+
+    final colorList = <Color>[
+      const Color.fromARGB(255, 20, 164, 77),
+      const Color.fromARGB(255, 220, 76, 100),
+    ];
+
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: PieChart(
