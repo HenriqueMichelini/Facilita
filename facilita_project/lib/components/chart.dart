@@ -5,11 +5,13 @@ class Chart extends StatelessWidget {
   Chart({Key? key});
 
   final dataMap = <String, double>{
-    "Flutter": 5,
+    "Envios": 10,
+    "Despesas": 5,
   };
 
   final colorList = <Color>[
-    Colors.greenAccent,
+    const Color.fromARGB(255, 20, 164, 77),
+    const Color.fromARGB(255, 220, 76, 100),
   ];
 
   @override
@@ -19,8 +21,14 @@ class Chart extends StatelessWidget {
       child: PieChart(
         dataMap: dataMap,
         chartType: ChartType.ring,
-        baseChartColor: Colors.grey[300]!,
+        baseChartColor: const Color.fromARGB(255, 255, 255, 255),
         colorList: colorList,
+        legendOptions: const LegendOptions(
+          legendTextStyle: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
       ),
     );
   }
