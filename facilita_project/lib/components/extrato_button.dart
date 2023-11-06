@@ -13,7 +13,7 @@ class ExtratoButton extends StatelessWidget {
         padding: const EdgeInsets.all(25),
         margin: const EdgeInsets.symmetric(horizontal: 25),
         decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 25, 43, 27),
+          color: const Color.fromARGB(255, 6, 20, 18),
           borderRadius: BorderRadius.circular(8),
         ),
         child: const Center(

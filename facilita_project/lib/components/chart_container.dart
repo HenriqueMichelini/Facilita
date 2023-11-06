@@ -17,7 +17,7 @@ class ChartContainer extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                color: const Color.fromARGB(255, 25, 43, 27),
+                color: const Color.fromARGB(255, 6, 20, 18),
               ),
               height: 400,
               padding: const EdgeInsets.symmetric(horizontal: 15),
