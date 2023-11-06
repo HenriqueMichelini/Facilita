@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CarteiraContainer extends StatelessWidget {
-  const CarteiraContainer({super.key});
+  const CarteiraContainer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +26,7 @@ class CarteiraContainer extends StatelessWidget {
                 children: [
                   Container(
                     alignment: Alignment.center,
+                    // Removed 'child' property here
                     child: const Text(
                       "CARTEIRA",
                       style: TextStyle(
@@ -35,29 +36,49 @@ class CarteiraContainer extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Text(
-                    "Saldo: 100",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  const Row(
+                    children: [
+                      Icon(Icons.account_balance_wallet_outlined,
+                          color: Colors.white),
+                      SizedBox(width: 10), // Add some spacing
+                      Text(
+                        "Saldo: 100",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
                   ),
-                  const Text(
-                    "Despesas: 500",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  const Row(
+                    children: [
+                      Icon(Icons.arrow_circle_up_outlined, color: Colors.white),
+                      SizedBox(width: 10), // Add some spacing
+                      Text(
+                        "Despesas: 500",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
                   ),
-                  const Text(
-                    "Despesas: 500",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  const Row(
+                    children: [
+                      Icon(Icons.arrow_circle_down_outlined,
+                          color: Colors.white),
+                      SizedBox(width: 10), // Add some spacing
+                      Text(
+                        "Despesas: 500",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
