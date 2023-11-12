@@ -1,3 +1,4 @@
+import 'package:facilita_project/components/extrato_select_type.dart';
 import 'package:flutter/material.dart';
 import 'package:facilita_project/components/date_container.dart';
 
@@ -28,6 +29,8 @@ class Extrato extends StatelessWidget {
               //  12 credit_card
               children: [
                 DateContainer(),
+                SizedBox(height: 10),
+                ExtratoSelectType(),
               ],
             ),
           ),

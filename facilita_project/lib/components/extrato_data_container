@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CarteiraContainer extends StatelessWidget {
-  const CarteiraContainer({super.key});
+class ExtratoDataContainer extends StatelessWidget {
+  const ExtratoDataContainer ({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class CarteiraContainer extends StatelessWidget {
                     alignment: Alignment.center,
                     // Removed 'child' property here
                     child: const Text(
-                      "CARTEIRA",
+                      "Apartir de quando?",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 24,
@@ -38,11 +38,10 @@ class CarteiraContainer extends StatelessWidget {
                   ),
                   const Row(
                     children: [
-                      Icon(Icons.account_balance_wallet_outlined,
-                          color: Colors.white),
+                      Icon(Icons.hourglass_empty, color: Colors.white),
                       SizedBox(width: 10), // Add some spacing
                       Text(
-                        "Saldo: 100",
+                        "Início: 10/10/2023",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -53,25 +52,10 @@ class CarteiraContainer extends StatelessWidget {
                   ),
                   const Row(
                     children: [
-                      Icon(Icons.arrow_circle_up_outlined, color: Colors.white),
+                      Icon(Icons.hourglass_full, color: Colors.white),
                       SizedBox(width: 10), // Add some spacing
                       Text(
-                        "Despesas: 500",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const Row(
-                    children: [
-                      Icon(Icons.arrow_circle_down_outlined,
-                          color: Colors.white),
-                      SizedBox(width: 10), // Add some spacing
-                      Text(
-                        "Despesas: 500",
+                        "Fim: 15/11/2023",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,

@@ -20,7 +20,7 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 5, 29, 31),
+      backgroundColor: const Color.fromARGB(255, 5, 29, 31),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Center(
