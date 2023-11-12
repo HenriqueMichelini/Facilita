@@ -17,11 +17,27 @@ class ExtratoListContainer extends StatelessWidget {
                 color: const Color.fromARGB(255, 6, 20, 18),
               ),
               height: 400,
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+              child: ListView(
+                children: const [
+                  ExtratoListTexts(
+                      description: "Compras: 100", type: "DESPESA"),
+                  SizedBox(height: 10),
+                  ExtratoListTexts(
+                      description: "Vendas: 150", type: "RECEBIMENTO"),
+                  SizedBox(height: 10),
+                  ExtratoListTexts(
+                      description: "Compras: 100", type: "DESPESA"),
+                  SizedBox(height: 10),
+                  ExtratoListTexts(
+                      description: "Vendas: 150", type: "RECEBIMENTO"),
+                  SizedBox(height: 10),
+                  ExtratoListTexts(
+                      description: "Compras: 100", type: "DESPESA"),
+                  SizedBox(height: 10),
+                  ExtratoListTexts(
+                      description: "Vendas: 150", type: "RECEBIMENTO"),
+                  SizedBox(height: 10),
                   ExtratoListTexts(
                       description: "Compras: 100", type: "DESPESA"),
                   SizedBox(height: 10),
