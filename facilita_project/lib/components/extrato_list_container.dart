@@ -16,7 +16,7 @@ class ExtratoListContainer extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
                 color: const Color.fromARGB(255, 6, 20, 18),
               ),
-              height: 400,
+              height: 300,
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               child: ListView(
                 children: const [

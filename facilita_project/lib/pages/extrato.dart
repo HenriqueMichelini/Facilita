@@ -1,3 +1,4 @@
+import 'package:facilita_project/components/extrato_cadastrar_button.dart';
 import 'package:facilita_project/components/extrato_list_container.dart';
 import 'package:facilita_project/components/extrato_select_type.dart';
 import 'package:flutter/material.dart';
@@ -6,10 +7,12 @@ import 'package:facilita_project/components/date_container.dart';
 class Extrato extends StatelessWidget {
   const Extrato({super.key});
 
+  void openPage() {}
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Color.fromARGB(255, 5, 29, 31),
+    return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 5, 29, 31),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Center(
@@ -29,11 +32,13 @@ class Extrato extends StatelessWidget {
               //  11 web
               //  12 credit_card
               children: [
-                DateContainer(),
-                SizedBox(height: 10),
-                ExtratoSelectType(),
-                SizedBox(height: 10),
-                ExtratoListContainer()
+                const DateContainer(),
+                const SizedBox(height: 10),
+                const ExtratoSelectType(),
+                const SizedBox(height: 10),
+                const ExtratoListContainer(),
+                const SizedBox(height: 10),
+                ExtratoCadastrarButton(onTap: openPage),
               ],
             ),
           ),
