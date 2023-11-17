@@ -4,7 +4,6 @@ import 'package:facilita_project/components/extrato_button.dart';
 import 'package:flutter/material.dart';
 import 'package:facilita_project/components/select_button.dart';
 import 'package:provider/provider.dart';
-
 import '../services/auth_service.dart';
 
 class Dashboard extends StatelessWidget {

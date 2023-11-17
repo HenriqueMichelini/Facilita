@@ -2,6 +2,7 @@ import 'package:facilita_project/components/chart_container.dart';
 import 'package:facilita_project/firebase_options.dart';
 import 'package:facilita_project/pages/dashboard.dart';
 import 'package:facilita_project/pages/login_page.dart';
+import 'package:facilita_project/pages/cadastrar.dart';
 import 'package:facilita_project/pages/extrato.dart';
 import 'package:facilita_project/services/auth_service.dart';
 import 'package:facilita_project/widgets/auth_check.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Facillita',
       //home: Dashboard(),
-      home: Extrato(),
+      home: Cadastrar(),
       //home: AuthCheck(),
     );
   }
