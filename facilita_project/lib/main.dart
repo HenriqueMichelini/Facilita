@@ -35,8 +35,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Facillita',
       //home: Dashboard(),
-      home: Cadastrar(),
-      //home: AuthCheck(),
+      //home: Extrato(),
+      //home: Cadastrar(),
+      home: AuthCheck(),
     );
   }
 }
