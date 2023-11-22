@@ -7,7 +7,10 @@ import 'package:facilita_project/components/date_container.dart';
 class Extrato extends StatelessWidget {
   const Extrato({super.key});
 
-  void openPage() {}
+  void openCadastrar(BuildContext context) {
+    // Navigate to the Extrato page
+    Navigator.pushNamed(context, '/cadastrar');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +41,7 @@ class Extrato extends StatelessWidget {
                 const SizedBox(height: 10),
                 const ExtratoListContainer(),
                 const SizedBox(height: 10),
-                ExtratoCadastrarButton(onTap: openPage),
+                ExtratoCadastrarButton(onTap: () => openCadastrar(context)),
               ],
             ),
           ),

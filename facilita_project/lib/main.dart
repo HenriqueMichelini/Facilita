@@ -31,13 +31,27 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Facillita',
+      initialRoute: '/',
+      onGenerateRoute: (settings) {
+        if (settings.name == '/extrato') {
+          return MaterialPageRoute(
+            builder: (context) =>
+                const Extrato(), // Replace with your ExtratoPage
+          );
+        } else if (settings.name == '/cadastrar') {
+          return MaterialPageRoute(
+            builder: (context) =>
+                const Cadastrar(), // Replace with your ExtratoPage
+          );
+        }
+      },
       //home: Dashboard(),
       //home: Extrato(),
       //home: Cadastrar(),
-      home: AuthCheck(),
+      home: const AuthCheck(),
     );
   }
 }
