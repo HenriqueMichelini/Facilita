@@ -56,7 +56,7 @@ class CarteiraContainer extends StatelessWidget {
                       Icon(Icons.arrow_circle_up_outlined, color: Colors.white),
                       SizedBox(width: 10), // Add some spacing
                       Text(
-                        "Despesas: 500",
+                        "Depósitos: 500",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
