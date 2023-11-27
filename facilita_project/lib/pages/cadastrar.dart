@@ -1,5 +1,6 @@
-import 'package:facilita_project/components/cadastrar_dropdownbutton.dart';
 import 'package:facilita_project/components/cadastrar_button.dart';
+import 'package:facilita_project/components/cadastrar_date_container.dart';
+import 'package:facilita_project/components/cadastrar_icon_container.dart';
 import 'package:flutter/material.dart';
 import 'package:facilita_project/components/my_textfields.dart';
 import 'package:facilita_project/components/cadastrar_tipo_container.dart';
@@ -49,62 +50,20 @@ class _CadastrarState extends State<Cadastrar> {
                 const CadastrarTipoContainer(),
 
                 const SizedBox(height: 30),
-                const Center(
-                  child: Row(
-                    mainAxisAlignment:
-                        MainAxisAlignment.center, // Center content horizontally
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Ícone",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 24,
-                            ),
-                          ),
-                          CadastrarDropDownButton(),
-                        ],
-                      ),
-                      SizedBox(width: 100),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                "Data",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 24,
-                                ),
-                              ),
-                              SizedBox(width: 8), // Adjust as needed
-                              Icon(
-                                Icons.calendar_today,
-                                color: Colors.white,
-                                size: 20,
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 15),
-                          Text(
-                            "10/10/2010",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
 
+                const Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Expanded(
+                      child: CadastrarIconContainer(),
+                    ),
+                    SizedBox(width: 15),
+                    Expanded(
+                      child: CadastrarDateContainer(),
+                    ),
+                  ],
+                ),
                 const SizedBox(height: 30),
 
                 Column(
@@ -123,7 +82,7 @@ class _CadastrarState extends State<Cadastrar> {
                   ],
                 ),
 
-                const SizedBox(height: 200),
+                const SizedBox(height: 180),
 
                 const CadastrarButton(onTap: _cadastrar)
               ],
