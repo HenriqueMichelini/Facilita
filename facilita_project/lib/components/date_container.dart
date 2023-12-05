@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DateContainer extends StatefulWidget {
-  const DateContainer({Key? key}) : super(key: key);
+  const DateContainer({super.key});
 
   @override
   _DateContainerState createState() => _DateContainerState();
@@ -16,7 +16,10 @@ class _DateContainerState extends State<DateContainer> {
   void initState() {
     super.initState();
     _selectedDate = DateTime.now();
-    _startDate = DateTime(2000, 01, 01);
+
+    // Set _startDate to the first day of the current month
+    _startDate = DateTime(DateTime.now().year, DateTime.now().month, 1);
+
     _endDate = DateTime.now(); // Set _endDate to current system date
   }
 
@@ -72,13 +75,13 @@ class _DateContainerState extends State<DateContainer> {
                   ),
                   Row(
                     children: [
-                      Icon(Icons.hourglass_empty, color: Colors.white),
-                      SizedBox(width: 10),
+                      const Icon(Icons.hourglass_empty, color: Colors.white),
+                      const SizedBox(width: 10),
                       TextButton(
                         onPressed: () => _selectDate(context, true),
                         child: Text(
                           "Início: ${_startDate.day}/${_startDate.month}/${_startDate.year}",
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -89,13 +92,13 @@ class _DateContainerState extends State<DateContainer> {
                   ),
                   Row(
                     children: [
-                      Icon(Icons.hourglass_full, color: Colors.white),
-                      SizedBox(width: 10),
+                      const Icon(Icons.hourglass_full, color: Colors.white),
+                      const SizedBox(width: 10),
                       TextButton(
                         onPressed: () => _selectDate(context, false),
                         child: Text(
                           "Fim: ${_endDate.day}/${_endDate.month}/${_endDate.year}",
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
