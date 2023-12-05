@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 class ExtratoListTexts extends StatelessWidget {
@@ -12,7 +14,7 @@ class ExtratoListTexts extends StatelessWidget {
   final String description;
   final String type;
   final String icon;
-  final String amount;
+  final double amount;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +61,7 @@ class ExtratoListTexts extends StatelessWidget {
                 ),
               ),
               Text(
-                amount,
+                'R\$ $amount}',
                 style: TextStyle(
                   color: textColor,
                   fontSize: 20,
