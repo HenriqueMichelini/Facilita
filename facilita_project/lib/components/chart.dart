@@ -17,12 +17,11 @@ class Chart extends StatefulWidget {
 class _ChartState extends State<Chart> {
   final financial = BehaviorSubject<FinancialModel>();
   final FinancialRepository repository = FinancialRepository(dio: Dio());
-  late FinancialModel totalazer;
 
   @override
   void initState() {
     super.initState();
-    //totalazer = getFinancialTotalizer();
+    getFinancialTotalizer();
   }
 
   getFinancialTotalizer() async {
@@ -33,11 +32,6 @@ class _ChartState extends State<Chart> {
 
   @override
   Widget build(BuildContext context) {
-    final dataMap = <String, double>{
-      "Depósito": 25,
-      "Despesas": 32,
-    };
-
     final colorList = <Color>[
       const Color.fromARGB(255, 20, 164, 77),
       const Color.fromARGB(255, 220, 76, 100),
@@ -45,18 +39,26 @@ class _ChartState extends State<Chart> {
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: PieChart(
-        dataMap: dataMap,
-        chartType: ChartType.ring,
-        baseChartColor: const Color.fromARGB(255, 255, 255, 255),
-        colorList: colorList,
-        legendOptions: const LegendOptions(
-          legendTextStyle: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-        ),
-      ),
+      child: StreamBuilder<FinancialModel>(
+          stream: financial,
+          builder: (context, snapshot) {
+            final dataMap = {
+              "Depósito": snapshot.data?.totalIncome ?? 0,
+              "Despesas": snapshot.data?.totalExpense ?? 0,
+            };
+            return PieChart(
+              dataMap: dataMap.cast(),
+              chartType: ChartType.ring,
+              baseChartColor: const Color.fromARGB(255, 255, 255, 255),
+              colorList: colorList,
+              legendOptions: const LegendOptions(
+                legendTextStyle: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            );
+          }),
     );
   }
 }

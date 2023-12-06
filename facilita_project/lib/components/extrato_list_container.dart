@@ -22,33 +22,30 @@ class ExtratoListContainer extends StatefulWidget {
       required this.typeId});
 
   @override
-  State<ExtratoListContainer> createState() => _ExtratoListContainerState(
-      startDate: startDate, endDate: endDate, typeId: typeId);
+  State<ExtratoListContainer> createState() => _ExtratoListContainerState();
 }
 
 class _ExtratoListContainerState extends State<ExtratoListContainer> {
-  final DateTime startDate;
-  final DateTime endDate;
-  final int typeId;
+  
   final extract = BehaviorSubject<List<ExtractModel>>();
 
-  _ExtratoListContainerState(
-      {required this.startDate, required this.endDate, required this.typeId});
+  _ExtratoListContainerState();
 
   @override
   void initState() {
     super.initState();
-    getExtract();
   }
 
   final ExtractRepository repository = ExtractRepository(dio: Dio());
 
   getExtract() async {
-    extract.add(await repository.getExtract(startDate, endDate, typeId));
+    extract.add([]);
+    extract.add(await repository.getExtract(widget.startDate, widget.endDate, widget.typeId));
   }
 
   @override
   Widget build(BuildContext context) {
+    getExtract();
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Row(

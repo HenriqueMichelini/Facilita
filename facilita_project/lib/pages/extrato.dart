@@ -43,9 +43,11 @@ class _ExtratoState extends State<Extrato> {
     );
     if (picked != null && picked != (isStartDate ? _startDate : _endDate)) {
       if (isStartDate) {
-        setState(() => _startDate = picked);
+        ( _startDate = picked);
+        extract.add(!extract.value);
       } else {
-        setState(() => _endDate = picked);
+         (_endDate = picked);
+        extract.add(!extract.value);
       }
     }
   }
@@ -148,7 +150,7 @@ class _ExtratoState extends State<Extrato> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                const ExtratoSelectType(),
+                //const ExtratoSelectType(),
                 const SizedBox(height: 10),
                 StreamBuilder<bool>(
                     stream: extract,
