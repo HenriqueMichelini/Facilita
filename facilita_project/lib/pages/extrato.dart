@@ -4,6 +4,7 @@ import 'package:facilita_project/components/extrato_select_type.dart';
 import 'package:facilita_project/enums/extract_Type.dart';
 import 'package:flutter/material.dart';
 import 'package:facilita_project/components/date_container.dart';
+import 'package:rxdart/rxdart.dart';
 
 class Extrato extends StatefulWidget {
   const Extrato({Key? key}) : super(key: key);
@@ -16,18 +17,21 @@ class _ExtratoState extends State<Extrato> {
   late DateTime _selectedDate;
   late DateTime _startDate;
   late DateTime _endDate;
+  final extract = BehaviorSubject.seeded(false);
 
   @override
   void initState() {
     super.initState();
-    // _selectedDate = DateTime.now();
-    // _startDate = DateTime(DateTime.now().year, DateTime.now().month, 1);
-    // _endDate = DateTime.now();
+    _selectedDate = DateTime.now();
+    _startDate = DateTime(DateTime.now().year, DateTime.now().month, 1);
+    _endDate = DateTime.now();
   }
 
   void openCadastrar(BuildContext context) {
     // Navigate to the Extrato page
-    Navigator.pushNamed(context, '/cadastrar');
+    Navigator.pushNamed(context, '/cadastrar').then((value) {
+      extract.add(!extract.value);
+    });
   }
 
   Future<void> _selectDate(BuildContext context, bool isStartDate) async {
@@ -38,12 +42,11 @@ class _ExtratoState extends State<Extrato> {
       lastDate: DateTime(2101),
     );
     if (picked != null && picked != (isStartDate ? _startDate : _endDate)) {
-        if (isStartDate) {
-          setState(() => _startDate = picked);
-        } else {
-          setState(() => _endDate = picked);
-        }
-      
+      if (isStartDate) {
+        setState(() => _startDate = picked);
+      } else {
+        setState(() => _endDate = picked);
+      }
     }
   }
 
@@ -147,7 +150,12 @@ class _ExtratoState extends State<Extrato> {
                 const SizedBox(height: 10),
                 const ExtratoSelectType(),
                 const SizedBox(height: 10),
-                ExtratoListContainer(startDate: _startDate, endDate: _endDate, typeId: 0),
+                StreamBuilder<bool>(
+                    stream: extract,
+                    builder: (context, snapshot) {
+                      return ExtratoListContainer(
+                          startDate: _startDate, endDate: _endDate, typeId: 0);
+                    }),
                 const SizedBox(height: 10),
                 ExtratoCadastrarButton(onTap: () => openCadastrar(context)),
               ],

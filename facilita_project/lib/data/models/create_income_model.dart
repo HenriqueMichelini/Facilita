@@ -2,39 +2,41 @@
 import 'dart:convert';
 import 'dart:ffi';
 
-class IncomeModel {
-  final int incomeId;
+class CreateIncomeModel {
   final String incomeName;
   final double incomeAmount;
   final DateTime incomeDate;
+  final String userUID;
 
-  IncomeModel(
+  CreateIncomeModel(
       {
-      required this.incomeId,
       required this.incomeName,
       required this.incomeAmount,
       required this.incomeDate,
+      required this.userUID,
       });
+
+  
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'incomeId': incomeId,
       'incomeName': incomeName,
       'incomeAmount': incomeAmount,
       'incomeDate': incomeDate.millisecondsSinceEpoch,
+      'userUID': userUID,
     };
   }
 
-  factory IncomeModel.fromMap(Map<String, dynamic> map) {
-    return IncomeModel(
-      incomeId: map['incomeId'] as int,
+  factory CreateIncomeModel.fromMap(Map<String, dynamic> map) {
+    return CreateIncomeModel(
       incomeName: map['incomeName'] as String,
       incomeAmount: double.parse(map['incomeAmount'].toString()),
       incomeDate: DateTime.parse(map['incomeDate']),
+      userUID: map['userUID'],
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory IncomeModel.fromJson(String source) => IncomeModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory CreateIncomeModel.fromJson(String source) => CreateIncomeModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }

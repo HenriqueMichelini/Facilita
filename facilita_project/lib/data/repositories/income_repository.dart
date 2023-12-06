@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:facilita_project/data/models/create_income_model.dart';
 import 'package:facilita_project/data/models/income_model.dart';
 import 'package:facilita_project/services/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
