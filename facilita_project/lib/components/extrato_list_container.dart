@@ -1,25 +1,44 @@
 import 'package:dio/dio.dart';
 import 'package:facilita_project/components/extrato_list_texts.dart';
 import 'package:facilita_project/components/progress.dart';
+import 'package:facilita_project/data/models/extract_model.dart';
 import 'package:facilita_project/data/models/income_model.dart';
+import 'package:facilita_project/data/repositories/extract_repository.dart';
 import 'package:facilita_project/data/repositories/income_repository.dart';
+import 'package:facilita_project/enums/extract_Type.dart';
 import 'package:facilita_project/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class ExtratoListContainer extends StatefulWidget {
-  const ExtratoListContainer({super.key});
+  final DateTime startDate;
+  final DateTime endDate;
+  final int typeId;
+
+  const ExtratoListContainer(
+      {super.key,
+      required this.startDate,
+      required this.endDate,
+      required this.typeId});
 
   @override
-  State<ExtratoListContainer> createState() => _ExtratoListContainerState();
+  State<ExtratoListContainer> createState() => _ExtratoListContainerState(
+      startDate: startDate, endDate: endDate, typeId: typeId);
 }
 
 class _ExtratoListContainerState extends State<ExtratoListContainer> {
-  final IncomeRepository repository = IncomeRepository(dio: Dio());
+  final DateTime startDate;
+  final DateTime endDate;
+  final int typeId;
+
+  _ExtratoListContainerState(
+      {required this.startDate, required this.endDate, required this.typeId});
 
   @override
   void initState() {
     super.initState();
   }
+
+  final ExtractRepository repository = ExtractRepository(dio: Dio());
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +54,8 @@ class _ExtratoListContainerState extends State<ExtratoListContainer> {
               ),
               height: 300,
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-              child: FutureBuilder<List<IncomeModel?>>(
-                future: repository.getIncome(),
+              child: FutureBuilder<List<ExtractModel?>>(
+                future: repository.getExtract(startDate, endDate, typeId),
                 builder: (context, snapshot) {
                   switch (snapshot.connectionState) {
                     case ConnectionState.none:
@@ -47,8 +66,8 @@ class _ExtratoListContainerState extends State<ExtratoListContainer> {
                     case ConnectionState.active:
                       break;
                     case ConnectionState.done:
-                      final List<IncomeModel> incomes =
-                          snapshot.data as List<IncomeModel>;
+                      final List<ExtractModel> incomes =
+                          snapshot.data as List<ExtractModel>;
                       if (snapshot.hasError) {
                         return Center(
                           child: Text(
@@ -81,66 +100,49 @@ class _ExtratoListContainerState extends State<ExtratoListContainer> {
                             final item = snapshot.data;
 
                             return Row(
-      children: [
-        // Icon(
-        //   Icons.fastfood,
-        //   color: Color.fromARGB(255, 20, 164, 77),
-        //   size: 24,
-        // ),
-        const SizedBox(width: 8),
-        Expanded(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: Text(
-                  item![index]!.incomeName,
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 20, 164, 77),
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Text(
-                'R\$ ${item[index]!.incomeAmount}',
-                style: TextStyle(
-                  color: Color.fromARGB(255, 20, 164, 77),
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-
-                            // return Card(
-                            //   child: ListTile(
-                            //     leading: const Icon(Icons.monetization_on),
-                            //     title: Text(
-                            //       item![index]!.incomeName,
-                            //       style: const TextStyle(
-                            //         fontSize: 24.0,
-                            //         fontWeight: FontWeight.bold,
-                            //       ),
-                            //     ),
-                            //     subtitle: Text(
-                            //       item![index]!.incomeAmount.toString(),
-                            //       style: const TextStyle(
-                            //         fontSize: 16.0,
-                            //       ),
-                            //     ),
-                            //   ),
-                            // );
-                            // ExtratoListTexts(
-                            //   icon: "fastfood",
-                            //   description: item![index]!.incomeName,
-                            //   type: "DEPOSITO",
-                            //   amount: item![index]!.incomeAmount,
-                            // );
+                              children: [
+                                // Icon(
+                                //   Icons.fastfood,
+                                //   color: Color.fromARGB(255, 20, 164, 77),
+                                //   size: 24,
+                                // ),
+                                const SizedBox(width: 8),
+                                Expanded(
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(4.0),
+                                        child: Text(
+                                          item![index]!.name,
+                                          style: TextStyle(
+                                            color: item![index]!.typeId == 1
+                                                ? Color.fromARGB(
+                                                    255, 20, 164, 77)
+                                                : const Color.fromARGB(
+                                                    255, 220, 76, 100),
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                      Text(
+                                        'R\$ ${item[index]!.amount}',
+                                        style: TextStyle(
+                                          color: item![index]!.typeId == 1
+                                              ? Color.fromARGB(255, 20, 164, 77)
+                                              : const Color.fromARGB(
+                                                  255, 220, 76, 100),
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            );
                           },
                         );
                       }
