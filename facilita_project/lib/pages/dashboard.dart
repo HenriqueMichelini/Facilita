@@ -49,7 +49,7 @@ class Dashboard extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 10),
-                const CarteiraContainer(),
+                CarteiraContainer(),
                 const SizedBox(height: 10),
                 const ChartContainer(),
                 const SizedBox(height: 20),

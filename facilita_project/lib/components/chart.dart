@@ -7,8 +7,8 @@ class Chart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dataMap = <String, double>{
-      "Envios": 10,
-      "Despesas": 5,
+      "Envios": 6000,
+      "Despesas": 4000,
     };
 
     final colorList = <Color>[

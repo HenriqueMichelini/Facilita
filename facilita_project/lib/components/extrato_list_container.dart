@@ -147,7 +147,6 @@ class _ExtratoListContainerState extends State<ExtratoListContainer> {
                         );
                       }
                   }
-                  ;
                   return const Text(
                     'Nenhum item na lista',
                     style: TextStyle(
