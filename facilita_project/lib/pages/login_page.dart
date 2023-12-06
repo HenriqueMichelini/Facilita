@@ -1,5 +1,7 @@
+import 'package:dio/dio.dart';
 import 'package:facilita_project/components/my_button.dart';
 import 'package:facilita_project/components/square_tile.dart';
+import 'package:facilita_project/data/repositories/user_repository.dart';
 import 'package:facilita_project/enums/providers.dart';
 import 'package:facilita_project/pages/reset_password_page.dart';
 import 'package:facilita_project/services/auth_service.dart';
@@ -26,6 +28,7 @@ class _LoginPageState extends State<LoginPage> {
   late String titulo;
   late String actionButton;
   late String togglerButton;
+  final UserRepository repository = UserRepository(dio: Dio()); 
 
   @override
   void initState() {
@@ -67,6 +70,7 @@ class _LoginPageState extends State<LoginPage> {
       await context
           .read<AuthService>()
           .register(usernameController.text, passwordController.text);
+      repository.addUser();
     } on AuthException catch (e) {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(e.message)));
@@ -82,6 +86,7 @@ class _LoginPageState extends State<LoginPage> {
     setState(() => isLoading = true);
     try {
       await context.read<AuthService>().loginWithProvider(Providers.google);
+      repository.addUser();
     } on AuthException catch (e) {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(e.message)));

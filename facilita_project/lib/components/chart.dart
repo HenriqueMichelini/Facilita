@@ -22,7 +22,7 @@ class _ChartState extends State<Chart> {
   @override
   void initState() {
     super.initState();
-    totalazer = getFinancialTotalizer();
+    //totalazer = getFinancialTotalizer();
   }
 
   getFinancialTotalizer() async {
